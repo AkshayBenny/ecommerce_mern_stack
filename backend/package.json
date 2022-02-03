@@ -11,6 +11,7 @@
   "dependencies": {
     "dotenv": "^15.0.0",
     "mongoose": "^6.1.10",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "styled-components": "^5.3.3"
   }
 }
