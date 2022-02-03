@@ -27,15 +27,19 @@ function Announcement() {
               <Slide index={index}>
                 <div className='grid justify-center gap-[30px] lg:grid-cols-2'>
                   <img
-                    className='h-screen w-full object-cover'
+                    className='h-[400px] w-full object-cover lg:h-screen'
                     src={item.img}
                     alt='playground'
                   />
-                  <div className='flex flex-col justify-center space-y-20 pr-[120px]'>
-                    <h1 className='text-8xl uppercase font-semibold'>{item.heading}</h1>
-                    <p className='text-4xl font-thin uppercase'>{item.desc}</p>
+                  <div className='flex flex-col justify-center px-[16px] lg:space-y-20 lg:px-0 lg:pr-[120px]'>
+                    <h1 className='text-4xl font-semibold uppercase lg:text-8xl'>
+                      {item.heading}
+                    </h1>
+                    <p className='text-2xl font-thin uppercase lg:text-4xl'>
+                      {item.desc}
+                    </p>
                     <div className='group'>
-                      <button className='border-2 border-slate-900 px-6 py-3 text-center text-xl uppercase'>
+                      <button className='w-full border-2 border-slate-900 px-6 py-3 text-center text-xl uppercase lg:w-fit'>
                         Shop now
                       </button>
                     </div>

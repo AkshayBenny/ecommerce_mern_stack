@@ -57,10 +57,6 @@ export const popularProducts = [
   },
 
   {
-    id: 5,
-    img: 'https://cdn.vox-cdn.com/thumbor/pjcUw1kyqVQA8sbGFd1mz2g9pog=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/22406771/Exbfpl2WgAAQkl8_resized.jpeg',
-  },
-  {
     id: 6,
     img: 'https://content.rolex.com/dam/2021/upright-bba-with-shadow/m126234-0050.png?impolicy=v6-upright&imwidth=270',
   },
