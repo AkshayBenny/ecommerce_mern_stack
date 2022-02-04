@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const userRoute = require('./routes/user');
 
 dotenv.config();
 
@@ -11,9 +12,8 @@ mongoose
   .then(() => console.log('Connected to database'))
   .catch((err) => console.log(err));
 
-app.get('/api/test', () => {
-  console.log('working--------------');
-});
+app.use(express.json()); //accepts post req as json
+app.use('/api/user', userRoute);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`Backend running server on port ${process.env.PORT}`);
