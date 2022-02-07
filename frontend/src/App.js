@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 //components imports
 import React from 'react';
@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
+  const user = true;
   return (
     <div className='select-none'>
       <Navbar />
@@ -33,12 +34,10 @@ function App() {
           <Cart />
         </Route>
 
-        <Route path='/login'>
-          <Login />
-        </Route>
+        <Route path='/login'>{user ? <Redirect to='/' /> : <Login />}</Route>
 
         <Route path='/register'>
-          <Register />
+          {user ? <Redirect to='/' /> : <Register />}
         </Route>
       </Switch>
     </div>

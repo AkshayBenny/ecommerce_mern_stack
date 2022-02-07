@@ -28,16 +28,19 @@ export const categories = [
     id: 1,
     img: 'https://cdn.shopify.com/s/files/1/0014/6217/3742/products/115213ZS-SMNH--11520_1_1600x.jpg?v=1617202546',
     title: 'shirt style',
+    cat: 'men',
   },
   {
     id: 2,
     img: 'https://n1.sdlcdn.com/imgs/h/e/3/Addyvero-Cotton-Lycra-Pink-Dresses-SDL636779215-1-d9dc6.jpeg',
     title: 'loungewear',
+    cat: 'women',
   },
   {
     id: 3,
     img: 'https://cdn.shopify.com/s/files/1/0266/6276/4597/products/100001_300793345_065_1.jpg?v=1574760082',
     title: 'light jackets',
+    cat: 'coat',
   },
 ];
 
