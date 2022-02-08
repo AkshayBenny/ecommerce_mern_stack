@@ -5,11 +5,17 @@ import Products from '../components/Products';
 function ProductList() {
   const location = useLocation();
   const cat = location.pathname.split('/')[2];
-  const [filter, setFilter] = useState({});
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState('newest');
 
   const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.name]: value,
+    });
+  };
 
-  }
   return (
     <div>
       <h1>Dresses</h1>
@@ -39,14 +45,15 @@ function ProductList() {
         </div>
         <div>
           <h2>Sort products:</h2>
-          <select name='sort'>
-            <option value='price'>Price</option>
-            <option value='name'>Name</option>
+          <select name='sort' onChange={(e) => setSort(e.target.value)}>
+            <option value='newest'>Newest</option>
+            <option value='desc'>Price (desc)</option>
+            <option value='asc'>Price (asc)</option>
           </select>
         </div>
       </div>
 
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
     </div>
   );
 }
