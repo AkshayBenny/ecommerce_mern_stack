@@ -27,6 +27,7 @@ function ProductList() {
             name='color'
             onChange={handleFilters}
           >
+            <option>__ __</option>
             <option value='yellow'>Yellow</option>
             <option value='blue'>Blue</option>
             <option value='violet'>Violet</option>
@@ -37,10 +38,11 @@ function ProductList() {
             name='size'
             onChange={handleFilters}
           >
-            <option value='md'>MD</option>
-            <option value='lg'>LG</option>
-            <option value='xl'>XL</option>
-            <option value='xxl'>XXL</option>
+            <option>_ _</option>
+            <option value='MD'>MD</option>
+            <option value='LG'>LG</option>
+            <option value='XL'>XL</option>
+            <option value='XXL'>XXL</option>
           </select>
         </div>
         <div>
