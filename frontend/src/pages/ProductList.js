@@ -18,7 +18,7 @@ function ProductList() {
 
   return (
     <div>
-      <h1>Dresses</h1>
+      <h1>{cat} category</h1>
       <div className='flex flex-wrap items-center lg:justify-between'>
         <div className='flex items-center gap-4'>
           <h3>Filter products:</h3>

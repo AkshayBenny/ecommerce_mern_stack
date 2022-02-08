@@ -52,9 +52,11 @@ function Products({ cat, filters, sort }) {
 
   return (
     <div className='gap-4 px-[16px] lg:grid lg:grid-cols-4 lg:px-[60px]'>
-      {filteredProducts.map((item) => (
-        <Product key={item.id} item={item} />
-      ))}
+      {cat
+        ? filteredProducts.map((item) => <Product key={item.id} item={item} />)
+        : products
+            .slice(0, 8)
+            .map((item) => <Product key={item.id} item={item} />)}
     </div>
   );
 }
