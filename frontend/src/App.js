@@ -11,6 +11,7 @@ import Cart from './pages/Cart';
 import ProductList from './pages/ProductList';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Success from './pages/Success';
 
 function App() {
   const user = true;
@@ -30,14 +31,19 @@ function App() {
           <Product />
         </Route>
 
-        <Route path='/cart'>
+        <Route path='/cart' exact>
           <Cart />
         </Route>
 
-        <Route path='/login'>{user ? <Redirect to='/' /> : <Login />}</Route>
+        <Route path='/login' exact>
+          {user ? <Redirect to='/' /> : <Login />}
+        </Route>
 
-        <Route path='/register'>
+        <Route path='/register' exact>
           {user ? <Redirect to='/' /> : <Register />}
+        </Route>
+        <Route path='/success' exact>
+          <Success />
         </Route>
       </Switch>
     </div>

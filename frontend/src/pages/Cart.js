@@ -16,16 +16,15 @@ function Cart() {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest('/checkout/payment', {
-          tokenId: stripeToken,
-          amount: cart.total * 100,
+        const res = await userRequest.post('/checkout/payment', {
+          tokenId: stripeToken.id,
+          amount: 100,
         });
-        history.push('/success');
-      } catch (error) {
-        console.log(error);
-      }
+        history.push('/success', { data: res.data });
+      } catch {}
     };
-  }, [stripeToken]);
+    stripeToken && cart.total >= 1 && makeRequest();
+  }, [stripeToken, cart.total, history]);
 
   return (
     <div>
