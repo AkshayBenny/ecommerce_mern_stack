@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { publicRequest } from '../requestMethod';
+import { addProduct } from '../redux/cartRedux';
+import { useDispatch } from 'react-redux';
 
 function Product() {
   const location = useLocation();
@@ -9,19 +11,23 @@ function Product() {
   const [qty, setQty] = useState(1);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get(`/products/find/${id}`);
         setProduct(res.data);
-        console.log(res.data);
       } catch (error) {
         console.log(error);
       }
     };
     getProduct();
   }, [id]);
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, qty, price: product.price * qty }));
+  };
 
   return (
     <div className='grid lg:grid-cols-2 '>
@@ -31,7 +37,7 @@ function Product() {
       <div className='space-y-6'>
         <h1>{product.title}</h1>
         <p>{product.desc}</p>
-        <h1>Price: {product.price * qty}$</h1>
+        <h1>Price: {product.price}$</h1>
         <p>Color</p>
         <select
           className='border border-black bg-white px-2 py-1'
@@ -61,23 +67,26 @@ function Product() {
           })}
         </select>
         <div className='flex items-center gap-4'>
-          <div className='text-4xl' onClick={() => setQty(qty + 1)}>
-            +
-          </div>
-          <input
-            className='w-[48px] rounded border py-2 text-center'
-            type='text'
-            value={qty}
-          />
           <div
             className='text-4xl'
             onClick={() => setQty(qty > 1 ? qty - 1 : qty)}
           >
             -
           </div>
+          <input
+            className='w-[48px] rounded  border-2 border-black py-2 text-center'
+            type='text'
+            value={qty}
+          />
+          <div className='text-4xl' onClick={() => setQty(qty + 1)}>
+            +
+          </div>
         </div>
         <div className='group'>
-          <button className='w-full border-2 border-slate-900 px-6 py-3 text-center text-xl uppercase lg:w-fit'>
+          <button
+            className='w-full border-2 border-slate-900 px-6 py-3 text-center text-xl uppercase lg:w-fit'
+            onClick={handleClick}
+          >
             Add to cart
           </button>
         </div>

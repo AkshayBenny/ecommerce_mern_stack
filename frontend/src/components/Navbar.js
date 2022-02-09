@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+  const quantity = useSelector((state) => state.cart.quantity);
+
   return (
     <div className=' px-[16px] lg:px-[60px]'>
       <div className='flex items-center justify-between'>
@@ -46,9 +49,11 @@ function Navbar() {
               <path fill='none' d='M0 0h24v24H0z' />
               <path d='M4 16V4H2V2h3a1 1 0 0 1 1 1v12h12.438l2-8H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1zm2 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z' />
             </svg>
-            <p className='absolute top-1 right-1 flex items-center justify-center rounded-full bg-slate-700 px-[8px] py-[3px] text-xs text-white'>
-              3
-            </p>
+            {quantity > 0 && (
+              <p className='absolute top-1 right-1 flex items-center justify-center rounded-full bg-slate-700 px-[8px] py-[3px] text-xs text-white'>
+                {quantity}
+              </p>
+            )}
           </div>
         </div>
       </div>
