@@ -8,7 +8,7 @@ function Product() {
   const location = useLocation();
   const id = location.pathname.split('/')[2];
   const [product, setProduct] = useState({});
-  const [qty, setQty] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Product() {
   }, [id]);
 
   const handleClick = () => {
-    dispatch(addProduct({ ...product, qty, price: product.price * qty }));
+    dispatch(addProduct({ ...product, quantity, color, size }));
   };
 
   return (
@@ -39,25 +39,26 @@ function Product() {
         <p>{product.desc}</p>
         <h1>Price: {product.price}$</h1>
         <p>Color</p>
-        <select
-          className='border border-black bg-white px-2 py-1'
-          name='color'
-          onChange={(e) => setColor(e.target.value)}
-        >
+        <div className='border border-black bg-white px-2 py-1'>
           {product.color?.map((c) => {
             return (
-              <option value={c} key={c}>
+              <div
+                key={c}
+                onClick={() => setColor(c)}
+                className='cursor-pointer hover:bg-slate-500'
+              >
                 {c}
-              </option>
+              </div>
             );
           })}
-        </select>
+        </div>
         <p>Size</p>
         <select
           className='border border-black bg-white px-2 py-1'
           name='size'
           onChange={(e) => setSize(e.target.value)}
         >
+          <option value=''>__ __</option>
           {product.size?.map((s) => {
             return (
               <option value={s} key={s}>
@@ -69,16 +70,16 @@ function Product() {
         <div className='flex items-center gap-4'>
           <div
             className='text-4xl'
-            onClick={() => setQty(qty > 1 ? qty - 1 : qty)}
+            onClick={() => setQuantity(quantity > 1 ? quantity - 1 : quantity)}
           >
             -
           </div>
           <input
             className='w-[48px] rounded  border-2 border-black py-2 text-center'
             type='text'
-            value={qty}
+            value={quantity}
           />
-          <div className='text-4xl' onClick={() => setQty(qty + 1)}>
+          <div className='text-4xl' onClick={() => setQuantity(quantity + 1)}>
             +
           </div>
         </div>
