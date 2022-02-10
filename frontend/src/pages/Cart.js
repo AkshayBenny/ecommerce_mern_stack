@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { userRequest } from '../requestMethod';
+// import { userRequest } from '../requestMethod';
 import StripeCheckout from 'react-stripe-checkout';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
