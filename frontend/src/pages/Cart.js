@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { userRequest } from '../requestMethod';
 import StripeCheckout from 'react-stripe-checkout';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
@@ -16,12 +17,24 @@ function Cart() {
   useEffect(() => {
     const makeRequest = async () => {
       try {
-        const res = await userRequest.post('/checkout/payment', {
-          tokenId: stripeToken.id,
-          amount: 100,
-        });
+        const res =
+          stripeToken &&
+          (await axios.post(
+            'http://localhost:5000/api/checkout/payment',
+            {
+              tokenId: stripeToken.id,
+              amount: cart.total,
+            },
+            {
+              headers: {
+                token: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZmU4NzFlZTQwNmRhMjEyZGE1NDYzYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0NDMxNDM5MCwiZXhwIjoxNjQ0MzM1OTkwfQ.bp6W41ft3gd8zbfeGnp3eTTs1crzwZAmIVi_FM4MJsQ`,
+              },
+            }
+          ));
         history.push('/success', { data: res.data });
-      } catch {}
+      } catch (error) {
+        console.log(error);
+      }
     };
     stripeToken && cart.total >= 1 && makeRequest();
   }, [stripeToken, cart.total, history]);
