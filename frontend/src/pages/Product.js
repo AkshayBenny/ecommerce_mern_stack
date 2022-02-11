@@ -75,7 +75,7 @@ function Product() {
             -
           </div>
           <input
-            className='w-[48px] rounded  border-2 border-black py-2 text-center'
+            className='w-[48px] rounded  border-2  border-black py-2 text-center'
             type='text'
             value={quantity}
           />
