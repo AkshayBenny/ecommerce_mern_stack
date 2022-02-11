@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../redux/apiCalls';
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const { isFetching, error } = useSelector((state) => state.user);
 
   const handleClick = (e) => {
     e.preventDefault();
+    login(dispatch, { username, password });
   };
 
   return (
@@ -27,7 +30,9 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className='bg-black px-12 py-2 text-white'
+          className={`bg-black px-12 py-2 text-white ${
+            !isFetching && 'disabled disabled:bg-slate-700'
+          }`}
           onClick={handleClick}
         >
           Login

@@ -10,16 +10,16 @@ function Navbar() {
       <div className='flex items-center justify-between'>
         <div className='flex items-center gap-10'>
           <p>EN</p>
-          <div class='relative mx-auto flex items-center  text-gray-600'>
+          <div className='relative mx-auto flex items-center  text-gray-600'>
             <input
-              class='h-10 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none'
+              className='h-10 rounded-lg border-2 border-gray-300 bg-white px-5 pr-16 text-sm focus:outline-none'
               type='search'
               name='search'
               placeholder='Search'
             />
-            <button type='submit' class='absolute right-0 top-0 mt-3 mr-4'>
+            <button type='submit' className='absolute right-0 top-0 mt-3 mr-4'>
               <svg
-                class='h-4 w-4 fill-current text-gray-600'
+                className='h-4 w-4 fill-current text-gray-600'
                 version='1.1'
                 id='Capa_1'
                 x='0px'
