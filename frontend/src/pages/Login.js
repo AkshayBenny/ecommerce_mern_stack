@@ -33,10 +33,27 @@ function Login() {
           className={`bg-black px-12 py-2 text-white ${
             !isFetching && 'disabled disabled:bg-slate-700'
           }`}
+          disabled={isFetching}
           onClick={handleClick}
         >
           Login
         </button>
+        {error && (
+          <div className='flex gap-6'>
+            <p className='text-red-600'>Something went wrong</p>
+            <span>
+              <button
+                className='border-b-2 border-black'
+                onClick={() => {
+                  setUsername('');
+                  setPassword('');
+                }}
+              >
+                Try again
+              </button>
+            </span>
+          </div>
+        )}
         <button className='border-b-black'>Create an account</button>
       </form>
     </div>

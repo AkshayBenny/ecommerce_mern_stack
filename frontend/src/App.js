@@ -1,4 +1,5 @@
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 //components imports
 import React from 'react';
@@ -14,7 +15,8 @@ import Register from './pages/Register';
 import Success from './pages/Success';
 
 function App() {
-  const user = false;
+  const user = useSelector((state) => state.user.currentUser);
+  console.log(user);
   return (
     <div className='select-none'>
       <Navbar />
