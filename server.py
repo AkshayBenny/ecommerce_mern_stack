@@ -42,7 +42,7 @@ def hello_world():
     return render_template('home.html', jobs=JOBS, company_name='Indvalley')
 
 
-@app.route("/jobs")
+@app.route("/api/jobs", methods=['GET'])
 def jobs():
     return jsonify(JOBS)
 
