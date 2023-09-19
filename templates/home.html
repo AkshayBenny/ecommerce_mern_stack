@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Job Listings</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f4f4f4;
+				margin: 0;
+				padding: 0;
+			}
+
+			header {
+				background-color: #333;
+				color: #fff;
+				text-align: center;
+				padding: 1rem 0;
+			}
+
+			.container {
+				width: 80%;
+				margin: 2rem auto;
+				background-color: #fff;
+				padding: 2rem;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			.job-listing {
+				border-bottom: 1px solid #e1e1e1;
+				padding: 1rem 0;
+			}
+
+			.job-listing:last-child {
+				border-bottom: none;
+			}
+
+			.job-title {
+				font-size: 1.5rem;
+				color: #333;
+			}
+
+			.job-description {
+				margin-top: 0.5rem;
+				color: #666;
+			}
+
+			.apply-button {
+				display: inline-block;
+				background-color: #4caf50;
+				color: #fff;
+				padding: 0.5rem 1rem;
+				text-decoration: none;
+				border-radius: 5px;
+				margin-top: 1rem;
+			}
+
+			.apply-button:hover {
+				background-color: #45a049;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header>
+			<h1>Flask Job Listings for {{company_name}}</h1>
+		</header>
+
+		<div class="container">
+			{% for job in jobs %} {% include 'components/jobitem.html' %} {%
+			endfor %}
+		</div>
+	</body>
+</html>
