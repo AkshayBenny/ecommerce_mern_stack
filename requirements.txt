@@ -1,4 +1,4 @@
-blinker==
+blinker
 click
 flask
 importlib-metadata
