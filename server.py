@@ -36,17 +36,20 @@ JOBS = [
     },
 ]
 
-
+# PAGE ROUTES
 @app.route("/")
-def hello_world():
+def home():
     return render_template('home.html', jobs=JOBS, company_name='Indvalley')
 
 
+# API ROUTES
 @app.route("/api/jobs", methods=['GET'])
-def jobs():
+def jobs_api():
     return jsonify(JOBS)
 
 
+ 
+# OTHER ROUTES
 @app.route('/favicon.png')
 def favicon():
     return url_for('static', filename='image/favicon.ico')
