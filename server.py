@@ -37,6 +37,8 @@ JOBS = [
 ]
 
 # PAGE ROUTES
+
+
 @app.route("/")
 def home():
     return render_template('home.html', jobs=JOBS, company_name='Indvalley')
@@ -48,8 +50,13 @@ def jobs_api():
     return jsonify(JOBS)
 
 
- 
+@app.route('/api/signin', methods=['GET', 'POST'])
+def signin():
+    return 'Signin page'
+
 # OTHER ROUTES
+
+
 @app.route('/favicon.png')
 def favicon():
     return url_for('static', filename='image/favicon.ico')
